@@ -43,7 +43,7 @@ public class MemberController extends HttpServlet {
 		MemberDAO member = new MemberDAO();
 
 		switch (command) {
-		case "/home":
+		case "/index":
 			site = "index.jsp";
 			break;
 		case "/list":
@@ -53,11 +53,10 @@ public class MemberController extends HttpServlet {
 			site = "add.jsp";
 			break;
 		case "/insert":
-			int result = member.insert(request, response);
+			int result1 = member.insert(request, response);
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-
-			if (result == 1) { // 업데이트 성공
+			if (result1 == 1) { // 업데이트 성공
 				out.println("<script>");
 				out.println(" alert('투표하기 정보가 정상적으로 등록 되었습니다!'); location.href='" + context + "';  ");
 				out.println("</script>");
@@ -71,11 +70,16 @@ public class MemberController extends HttpServlet {
 			break;
 
 		case "/votelist":
-			site = "votelist.jsp";
+			site = member.voteListAll(request, response);
+			break;
+			
+		case "/listscore":
+			site = member.scoreAll(request, response);
 			break;
 		}
+		
 		getServletContext().getRequestDispatcher("/" + site).forward(request, response);
-
+		  //내가 이동시킬 주소 site, forward는 주소는 그대로지만 내부에서 이동함
 	}
 
 }

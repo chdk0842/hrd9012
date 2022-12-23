@@ -8,8 +8,15 @@ public class Member {
 	String m_jumin;
 	String m_city;
 	String tel;
+	String score;
 	
 	
+	public String getScore() {
+		return score;
+	}
+	public void setScore(String score) {
+		this.score = score;
+	}
 	public String getM_no() {
 		return m_no;
 	}

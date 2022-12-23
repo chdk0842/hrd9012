@@ -29,10 +29,18 @@ function fn_submit() {
 	if (fn.v_confirm.value == "") {
 		alert("유권자확인이 선택되지 않았습니다.");
 		fn.v_confirm.focus();
-		return false; 
+		return false;
 	}
 
 	fn.submit(); //컨트롤러(서버)에 전송
+
+}
+
+
+
+function fn_reset() {
+
+	alert("정보를 지우고 처음부터 다시 입력합니다!");
 
 }
 
